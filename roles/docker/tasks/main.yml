@@ -1,0 +1,15 @@
+- name: Copy systemd drop-in file 
+  copy:
+    src: files/dockerd.conf
+    dest: /etc/systemd/system/docker.service.d/dockerd.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Enable dockerd in systemd
+  systemd:
+    name: docker.service
+    state: started
+    enabled: yes
+    daemon_reload: yes
+

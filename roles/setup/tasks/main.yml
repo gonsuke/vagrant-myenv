@@ -1,0 +1,28 @@
+- name: Upgrade all apt packages
+  apt:
+    upgrade: dist
+    update_cache: yes
+
+- name: Install apt packages
+  apt:
+    name:
+      - zsh
+      - jq
+      - fzf
+      - direnv
+      - docker.io
+      - docker-compose
+      - neovim
+      - golang-go
+      - protobuf-compiler
+      - mariadb-client
+      - postgresql-client-11
+    state: present
+
+- name: vagrant user setting
+  user:
+    name: vagrant
+    shell: /bin/zsh
+    groups: docker
+    append: yes
+
