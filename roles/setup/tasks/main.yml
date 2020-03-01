@@ -1,3 +1,20 @@
+- name: Import apt keys
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  loop:
+    - https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    - https://packagecloud.io/datawireio/telepresence/gpgkey
+
+- name: Add apt repositories
+  apt_repository:
+    repo: "{{ item.kind}} {{ item.uri }} {{ item.suite }} {{ item.release }}"
+    state: present
+  loop:
+    - { kind: deb, uri: "http://packages.cloud.google.com/apt", suite: "cloud-sdk-{{ ubuntu_lts_release }}", release: main }
+    - { kind: deb, uri: "https://apt.kubernetes.io/", suite: "kubernetes-xenial", release: main }
+    - { kind: deb, uri: "https://packagecloud.io/datawireio/telepresence/ubuntu/", suite: "xenial", release: main }
+
 - name: Upgrade all apt packages
   apt:
     upgrade: dist
@@ -5,19 +22,50 @@
 
 - name: Install apt packages
   apt:
-    name:
-      - zsh
-      - jq
-      - fzf
-      - direnv
-      - docker.io
-      - docker-compose
-      - neovim
-      - golang-go
-      - protobuf-compiler
-      - mariadb-client
-      - postgresql-client-11
+    name: "{{ item }}"
     state: present
+  loop:
+    - unzip
+    - zsh
+    - jq
+    - fzf
+    - direnv
+    - source-highlight
+    - docker.io
+    - docker-compose
+    - neovim
+    - golang-go
+    - protobuf-compiler
+    - mariadb-client
+    - postgresql-client-11
+    - google-cloud-sdk
+    - kubectl
+    - telepresence
+
+- name: Download additional tools
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    mode: "{{ item.mode }}"
+  loop:
+    - { url: "{{ terraform_download_url }}", dest: "/tmp", mode: "0644" }
+    - { url: "{{ kubesec_download_url }}", dest: "/tmp", mode: "0644" }
+    - { url: "{{ stern_download_url }}", dest: "/usr/local/bin/stern", mode: "0755" }
+    - { url: "{{ kubectx_download_url }}", dest: "/usr/local/bin/kubectx", mode: "0755" }
+    - { url: "{{ kubens_download_url }}", dest: "/usr/local/bin/kubens", mode: "0755" }
+    - { url: "{{ helm_download_url }}", dest: "/tmp", mode: "0644" }
+    - { url: "{{ eks_download_url }}", dest: "/tmp", mode: "0644" }
+  register: downloaded
+
+- name: Unarchive additional tools
+  unarchive:
+    src: "{{ item.dest }}"
+    dest: /usr/local/bin
+    owner: root
+    mode: 0755
+  when: item.dest is regex("(\.gz$|\.zip$)")
+  loop: "{{ downloaded.results }}"
 
 - name: vagrant user setting
   user:
