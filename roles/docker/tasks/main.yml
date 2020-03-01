@@ -1,7 +1,7 @@
 - name: Copy systemd drop-in file 
   copy:
     src: files/dockerd.conf
-    dest: /etc/systemd/system/docker.service.d/dockerd.conf
+    dest: /etc/systemd/system/docker.service.d/
     owner: root
     group: root
     mode: '0644'
