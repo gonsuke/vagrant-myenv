@@ -6,3 +6,4 @@
   loop:
     - typescript
     - serverless
+    - typescript-language-server
