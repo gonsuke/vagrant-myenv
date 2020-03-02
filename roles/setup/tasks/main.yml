@@ -22,25 +22,33 @@
 
 - name: Install apt packages
   apt:
-    name: "{{ item }}"
+    name:
+      - unzip
+      - ntp
+      - zsh
+      - jq
+      - fzf
+      - peco
+      - direnv
+      - source-highlight
+      - docker.io
+      - docker-compose
+      - neovim
+      - golang
+      - nodejs
+      - npm
+      - ruby
+      - bundler
+      - sqlite3
+      - protobuf-compiler
+      - mariadb-client
+      - postgresql-client-11
+      - google-cloud-sdk
+      - kubectl
+      - telepresence
+      - packer
     state: present
-  loop:
-    - unzip
-    - zsh
-    - jq
-    - fzf
-    - direnv
-    - source-highlight
-    - docker.io
-    - docker-compose
-    - neovim
-    - golang-go
-    - protobuf-compiler
-    - mariadb-client
-    - postgresql-client-11
-    - google-cloud-sdk
-    - kubectl
-    - telepresence
+    install_recommends: no
 
 - name: Download additional tools
   get_url:
