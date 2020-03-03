@@ -7,3 +7,4 @@
     - typescript
     - serverless
     - typescript-language-server
+    - '@bitwarden/cli'

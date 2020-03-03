@@ -30,13 +30,13 @@
       - fzf
       - peco
       - direnv
+      - ripgrep
       - source-highlight
       - docker.io
       - docker-compose
       - neovim
       - golang
       - nodejs
-      - npm
       - ruby
       - bundler
       - sqlite3
@@ -63,7 +63,10 @@
     - { url: "{{ kubectx_download_url }}", dest: "/usr/local/bin/kubectx", mode: "0755" }
     - { url: "{{ kubens_download_url }}", dest: "/usr/local/bin/kubens", mode: "0755" }
     - { url: "{{ helm_download_url }}", dest: "/tmp", mode: "0644" }
-    - { url: "{{ eks_download_url }}", dest: "/tmp", mode: "0644" }
+    - { url: "{{ ekscli_download_url }}", dest: "/tmp", mode: "0644" }
+    - { url: "{{ ecscli_download_url }}", dest: "/usr/local/bin/ecs-cli", mode: "0755" }
+    - { url: "{{ circleci_download_url }}", dest: "/tmp", mode: "0644" }
+    - { url: "{{ heroku_download_url }}", dest: "/tmp", mode: "0644" }
   register: downloaded
 
 - name: Unarchive additional tools
