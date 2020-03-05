@@ -31,6 +31,7 @@
       - peco
       - direnv
       - ripgrep
+      - httpie
       - source-highlight
       - docker.io
       - docker-compose
@@ -41,6 +42,7 @@
       - bundler
       - sqlite3
       - protobuf-compiler
+      - libprotobuf-dev
       - mariadb-client
       - postgresql-client-11
       - google-cloud-sdk
