@@ -40,6 +40,7 @@
       - neovim
       - golang
       - nodejs
+      - npm
       - ruby
       - bundler
       - sqlite3
