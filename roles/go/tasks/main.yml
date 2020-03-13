@@ -9,7 +9,7 @@
     - github.com/favadi/protoc-go-inject-tag
     - github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
   register: shell_stdout
-  become: false
+  become: no
 
 - name: debug
   debug: 
