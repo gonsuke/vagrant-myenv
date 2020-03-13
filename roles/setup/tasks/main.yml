@@ -29,6 +29,7 @@
       - zsh
       - jq
       - htop
+      - sysstat
       - fzf
       - peco
       - direnv
