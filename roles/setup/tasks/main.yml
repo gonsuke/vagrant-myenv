@@ -1,3 +1,36 @@
+- name: Check if swap is mounted
+  shell: grep '{{ swap_file_path }}' /proc/swaps
+  ignore_errors: yes
+  register: swap_file_exists
+
+- name: Allocate swap space in file
+  shell: fallocate -l "{{ swap_file_size }}" "{{ swap_file_path }}"
+  when: swap_file_exists.rc == 1
+
+- name: chmod swap file
+  file:
+    path: "{{ swap_file_path }}"
+    mode: 0600
+
+- name: Create swap space
+  shell: mkswap "{{ swap_file_path }}"
+  when: swap_file_exists.rc == 1
+
+- name: Swap on
+  shell: swapon "{{ swap_file_path }}"
+  when: swap_file_exists.rc == 1
+
+- name: Keep swap mount path persistent in fstab
+  mount:
+    name: swap
+    src: "{{ swap_file_path }}"
+    fstype: swap
+    opts: defaults
+    passno: '0'
+    dump: '0'
+    state: present
+  when: swap_file_exists == 1
+
 - name: Import apt keys
   apt_key:
     url: "{{ item }}"
