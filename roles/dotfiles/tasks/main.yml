@@ -1,0 +1,26 @@
+- name: Get ssh user home directory
+  shell: 'getent passwd "{{ ansible_ssh_user }}" | cut -d: -f6'
+  register: ssh_user_home
+
+- name: debug
+  debug:
+    msg: "{{ ssh_user_home }}"
+
+- name: Git clone my dotfiles repo
+  git:
+    repo: 'https://github.com/gonsuke/dotfiles_minimum.git'
+    dest: "{{ ssh_user_home.stdout }}/dotfiles_minimum"
+  become: no
+
+- name: Put symliniks to dotfiles
+  file: 
+    src: "{{ ssh_user_home.stdout }}/dotfiles_minimum/{{ item.src }}"
+    dest: "{{ item.dest}}"
+    state: link
+  loop:
+    - { src: "zshrc", dest: "{{ ssh_user_home.stdout }}/.zshrc" }
+    - { src: "tmux.conf", dest: "{{ ssh_user_home.stdout }}/.tmux.conf" }
+    - { src: "gitconfig", dest: "{{ ssh_user_home.stdout }}/.gitconfig" }
+    - { src: "gitignore_global", dest: "{{ ssh_user_home.stdout }}/.gitignore_global" }
+    - { src: "vimrc", dest: "{{ ssh_user_home.stdout }}/.vimrc" }
+    - { src: "vim", dest: "{{ ssh_user_home.stdout }}/.vim" }
