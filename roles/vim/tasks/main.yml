@@ -1,0 +1,21 @@
+- name: Create cache directory for dein.vim
+  file:
+      path: /home/{{ ansible_user }}/.cache/dein
+      state: directory
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+  become: no
+
+- name: Download dein.vim
+  get_url:
+    url: "{{ dein_download_url }}"
+    dest: /home/{{ ansible_user }}/.cache/dein/
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0755
+  become: no
+
+- name: Install dein.vim
+  shell: /home/{{ ansible_user }}/.cache/dein/installer.sh /home/{{ ansible_user }}/.cache/dein/
+  become: no
+
