@@ -92,6 +92,7 @@
       - python3-dev
     state: present
     install_recommends: no
+  ignore_errors: yes
 
 - name: Download additional tools
   get_url:
@@ -123,7 +124,7 @@
 
 - name: Add ssh user to docker group, then chsh to zsh
   user:
-    name: {{ ansible_ssh_user }}
+    name: "{{ ansible_ssh_user }}"
     shell: /bin/zsh
     groups: docker
     append: yes
