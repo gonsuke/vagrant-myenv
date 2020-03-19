@@ -121,10 +121,15 @@
   when: item.dest is regex("(\.gz$|\.zip$)")
   loop: "{{ downloaded.results }}"
 
-- name: vagrant user setting
+- name: Add ssh user to docker group, then chsh to zsh
   user:
-    name: vagrant
+    name: {{ ansible_ssh_user }}
     shell: /bin/zsh
     groups: docker
     append: yes
 
+- name: Systemctl enable & start ntpd
+  systemd:
+    name: ntp
+    state: started
+    enabled: yes
