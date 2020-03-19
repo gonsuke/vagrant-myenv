@@ -13,9 +13,11 @@
     ecscli_download_url: https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
     circleci_download_url: https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.6648/circleci-cli_0.1.6648_linux_amd64.tar.gz
     heroku_download_url: https://cli-assets.heroku.com/heroku-linux-x64.tar.gz
+    dein_download_url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
   become: yes
   roles:
     - setup
     - docker
     - npm
     - go
+    - pip3

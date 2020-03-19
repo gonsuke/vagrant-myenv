@@ -1,0 +1,11 @@
+- name: Install pip3 packages
+  pip:
+    executable: /usr/bin/pip3
+    name: 
+        - awscli
+        - wheel
+        - python-language-server
+        - neovim
+    state: present
+    extra_args: --user
+  become: no
