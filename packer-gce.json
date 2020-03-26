@@ -1,0 +1,38 @@
+{
+  "variables": {
+    "ZONE": "us-west1-a",
+    "PROJECT_ID": "dummy",
+    "BUILDER_INSTANCE_SIZE": "n1-standard-1",
+    "ACCOUNT_FILE": "./application_default_credentials.json",
+    "IMAGE_FAMILY": "ubuntu-1910"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "{{user `PROJECT_ID`}}",
+      "source_image_family": "{{user `IMAGE_FAMILY`}}",
+      "ssh_username": "ubuntu",
+      "ssh_timeout": "5m",
+      "image_name": "packer-ubuntu-myenv-{{timestamp}}",
+      "zone": "{{user `ZONE`}}",
+      "machine_type": "{{user `BUILDER_INSTANCE_SIZE`}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 30",
+        "sudo apt-get update",
+        "sudo apt-get -y install python3-distutils ansible"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_dir": "./",
+      "playbook_file": "./playbook.yml",
+      "extra_arguments": [
+      ]
+    }
+  ]
+}

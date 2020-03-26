@@ -1,0 +1,48 @@
+{
+  "variables": {
+    "PROFILE": "default",
+    "REGION": "us-west-2",
+    "BUILDER_INSTANCE_SIZE": "t3.micro"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "profile": "{{user `PROFILE`}}",
+      "region": "{{user `REGION`}}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "ubuntu/images/*ubuntu-*-18.*-amd64-server-*",
+          "root-device-type": "ebs"
+        },
+        "owners": ["099720109477"],
+        "most_recent": true
+     },
+      "instance_type": "{{user `BUILDER_INSTANCE_SIZE`}}",
+      "ssh_username": "ubuntu",
+      "ssh_timeout": "5m",
+      "ami_name": "packer-ubuntu-myenv-{{timestamp}}",
+      "tags": {
+        "Base_AMI_ID": "{{ .SourceAMI }}",
+        "Base_AMI_NAME": "{{ .SourceAMIName }}"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 30",
+        "sudo apt-get update",
+        "sudo apt-get -y install python3-distutils ansible"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_dir": "./",
+      "playbook_file": "./playbook.yml",
+      "extra_arguments": [
+      ]
+    }
+  ]
+}
