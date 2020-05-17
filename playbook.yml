@@ -9,6 +9,7 @@
     kubectx_download_url: https://github.com/ahmetb/kubectx/blob/v0.8.0/kubectx
     kubens_download_url: https://github.com/ahmetb/kubectx/blob/v0.8.0/kubens
     helm_download_url: https://get.helm.sh/helm-v3.1.1-linux-amd64.tar.gz
+    kustomize_download_url: https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.5.5/kustomize_v3.5.5_linux_amd64.tar.gz
     ekscli_download_url: https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz
     ecscli_download_url: https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
     circleci_download_url: https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.6949/circleci-cli_0.1.6949_linux_amd64.tar.gz

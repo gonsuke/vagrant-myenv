@@ -107,6 +107,7 @@
     - { url: "{{ stern_download_url }}", dest: "/usr/local/bin/stern", mode: "0755" }
     - { url: "{{ kubectx_download_url }}", dest: "/usr/local/bin/kubectx", mode: "0755" }
     - { url: "{{ kubens_download_url }}", dest: "/usr/local/bin/kubens", mode: "0755" }
+    - { url: "{{ kustomize_download_url }}", dest: "/usr/local/bin/kustomize", mode: "0755" }
     - { url: "{{ helm_download_url }}", dest: "/tmp", mode: "0644" }
     - { url: "{{ ekscli_download_url }}", dest: "/tmp", mode: "0644" }
     - { url: "{{ ecscli_download_url }}", dest: "/usr/local/bin/ecs-cli", mode: "0755" }
