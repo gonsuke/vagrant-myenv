@@ -82,7 +82,7 @@
       - protobuf-compiler
       - libprotobuf-dev
       - mariadb-client
-      - postgresql-client-11
+      - postgresql-client
       - google-cloud-sdk
       - kubectl
       - telepresence

@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = 'ubuntu/eoan64'
+  config.vm.box = 'ubuntu/focal64'
   config.disksize.size = '30GB'
   config.vm.boot_timeout = 600
   config.vm.synced_folder "#{Dir.home}/Documents/projects", "/home/vagrant/projects", create:"true"
@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision 'ansible_local' do |ansible|
     ansible.become = true
     ansible.playbook = '/vagrant/playbook.yml'
-    ansible.install_mode = "default"
+    ansible.install_mode = "pip"
     ansible.compatibility_mode = 'auto'
 
     ansible.extra_vars = {
