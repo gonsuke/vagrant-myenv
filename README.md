@@ -7,7 +7,7 @@ It also comes with Packer files for AMI image for AWS and GCE image for GCP.
 ## Environment
 
 ### OS
-* Ubuntu 19.10 (Eoan Ermine)
+* Ubuntu 20.04 LTS (Focal Fossa)
 
 ### DevOps tools
 * Docker
@@ -25,6 +25,7 @@ It also comes with Packer files for AMI image for AWS and GCE image for GCP.
 * helm
 * stern
 * telepresence
+* kustomize
 
 ### Programming
 
