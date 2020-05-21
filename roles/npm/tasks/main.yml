@@ -8,3 +8,4 @@
     - serverless
     - typescript-language-server
     - '@bitwarden/cli'
+  ignore_errors: yes
