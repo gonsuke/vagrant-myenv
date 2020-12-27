@@ -114,6 +114,8 @@
     - { url: "{{ ecscli_download_url }}", dest: "/usr/local/bin/ecs-cli", mode: "0755" }
     - { url: "{{ circleci_download_url }}", dest: "/tmp", mode: "0644" }
     - { url: "{{ heroku_download_url }}", dest: "/tmp", mode: "0644" }
+    - { url: "{{ dein_download_url }}", dest: "/tmp", mode: "0644" }
+    - { url: "{{ awstoe_download_url }}", dest: "/usr/local/bin/awstoe", mode: "0755" }
   register: downloaded
 
 - name: Unarchive additional tools
