@@ -7,5 +7,7 @@
     - typescript
     - serverless
     - typescript-language-server
+    - newman
+    - redoc-cli
     - '@bitwarden/cli'
   ignore_errors: yes
