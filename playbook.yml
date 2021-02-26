@@ -16,6 +16,8 @@
     heroku_download_url: https://cli-assets.heroku.com/heroku-linux-x64.tar.gz
     dein_download_url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
     awstoe_download_url: https://awstoe-us-east-1.s3.us-east-1.amazonaws.com/latest/linux/amd64/awstoe
+    awsvault_download_url: https://github.com/99designs/aws-vault/releases/download/v6.2.0/aws-vault-linux-amd64
+    pass_download_url: https://git.zx2c4.com/password-store/snapshot/password-store-1.7.3.zip -o password-store-1.7.3.zip
   become: yes
   roles:
     - setup
