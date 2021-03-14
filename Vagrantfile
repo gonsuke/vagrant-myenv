@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision 'ansible_local' do |ansible|
     ansible.become = true
     ansible.playbook = '/vagrant/playbook.yml'
-    ansible.install_mode = "pip"
+    ansible.install_mode = "default"
     ansible.compatibility_mode = 'auto'
 
     ansible.extra_vars = {
