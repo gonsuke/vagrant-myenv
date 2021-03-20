@@ -118,6 +118,7 @@
     - { url: "{{ awstoe_download_url }}", dest: "/usr/local/bin/awstoe", mode: "0755" }
     - { url: "{{ awsvault_download_url }}", dest: "/usr/local/bin/aws-vault", mode: "0755" }
     - { url: "{{ pass_download_url }}", dest: "/tmp", mode: "0644" }
+    - { url: "{{ minikube_download_url }}", dest: "/usr/local/bin/minikube", mode: "0755" }
   register: downloaded
 
 - name: Unarchive additional tools

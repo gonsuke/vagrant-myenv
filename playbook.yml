@@ -18,6 +18,7 @@
     awstoe_download_url: https://awstoe-us-east-1.s3.us-east-1.amazonaws.com/latest/linux/amd64/awstoe
     awsvault_download_url: https://github.com/99designs/aws-vault/releases/download/v6.2.0/aws-vault-linux-amd64
     pass_download_url: https://git.zx2c4.com/password-store/snapshot/password-store-1.7.3.zip
+    minikube_download_url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
   become: yes
   roles:
     - setup
