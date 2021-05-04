@@ -1,9 +1,8 @@
 {
   "variables": {
-    "PROFILE": "default",
-    "REGION": "us-west-2",
+    "REGION": "us-east-1",
     "BUILDER_INSTANCE_SIZE": "t2.small",
-    "BUILDER_VOLUME_SIZE": 20
+    "BUILDER_VOLUME_SIZE": "20"
   },
   "builders": [
     {
