@@ -4,7 +4,7 @@
     "PROJECT_ID": "dummy",
     "BUILDER_INSTANCE_SIZE": "n1-standard-1",
     "ACCOUNT_FILE": "./application_default_credentials.json",
-    "IMAGE_FAMILY": "ubuntu-minimal-2004-ltst"
+    "IMAGE_FAMILY": "ubuntu-minimal-2004-lts"
   },
   "builders": [
     {
