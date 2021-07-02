@@ -63,7 +63,6 @@
       - jq
       - htop
       - sysstat
-      - fzf
       - peco
       - direnv
       - fswatch
@@ -73,7 +72,7 @@
       - docker.io
       - docker-compose
       - neovim
-      - golang
+      - golang-1.16
       - nodejs
       - npm
       - ruby
